@@ -1,0 +1,29 @@
+graph TB
+    %% OS vs Kernel Explanation
+    subgraph OS_KERNEL ["🔍 OS vs Kernel"]
+        subgraph COMPLETE_OS ["💻 Complete Operating System"]
+            USER_SPACE["👤 User Space<br/>(Applications, GUI, Utils)"]
+            KERNEL_SPACE["🔧 Kernel Space<br/>(Core System)"]
+        end
+        
+        subgraph KERNEL_DETAILS ["🔧 Kernel Responsibilities"]
+            PROCESS_MGT["⚙️ Process Management"]
+            MEM_MGT["🧠 Memory Management"]
+            FILE_SYS["📁 File System"]
+            DEVICE_DRIVERS["🔌 Device Drivers"]
+            SYSTEM_CALLS["📞 System Calls"]
+        end
+    end
+
+    USER_SPACE --> SYSTEM_CALLS
+    SYSTEM_CALLS --> KERNEL_SPACE
+    
+    KERNEL_SPACE --> PROCESS_MGT
+    KERNEL_SPACE --> MEM_MGT
+    KERNEL_SPACE --> FILE_SYS
+    KERNEL_SPACE --> DEVICE_DRIVERS
+
+    %% Styling
+    classDef kernel fill:#f9cb9c,stroke:#b45f06,color:#000,font-weight:bold
+    
+    class KERNEL_SPACE,KERNEL_DETAILS kernel

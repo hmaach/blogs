@@ -1,0 +1,33 @@
+graph TB
+    %% Physical Hardware
+    HW["🖥️ Physical Hardware<br/>(CPU, RAM, Disk, Network)"]
+
+    %% Host OS & Kernel
+    HOST_OS["💻 Host OS<br/>(Windows/macOS/Linux)"]
+    HOST_KERNEL["🔧 Host Kernel<br/>(Linux Kernel)"]
+
+    %% Virtualization
+    HYPERVISOR["📦 Hypervisor<br/>(Oracle VirtualBox)"]
+    VM["📱 Virtual Machine<br/>(Debian Linux)"]
+    VM_KERNEL["🔧 Linux Kernel in VM"]
+    VM_APPS["📦 Applications in VM"]
+
+    %% Connections
+    HW --> HOST_KERNEL
+    HOST_KERNEL --> HOST_OS
+    HOST_OS --> HYPERVISOR
+    HYPERVISOR --> VM
+    VM --> VM_KERNEL
+    VM --> VM_APPS
+
+
+    %% Styling
+    classDef hardware fill:#e06666,stroke:#8b1a1a,color:#fff,font-weight:bold
+    classDef os fill:#6fa8dc,stroke:#204a87,color:#fff,font-weight:bold
+    classDef vm fill:#93c47d,stroke:#3c6e2e,color:#fff,font-weight:bold
+    classDef repo fill:#f9cb9c,stroke:#b45f06,color:#000,font-weight:bold
+
+    class HW hardware
+    class HOST_OS,HOST_KERNEL os
+    class HYPERVISOR,VM,VM_KERNEL,VM_APPS vm
+    class PROJECT repo
